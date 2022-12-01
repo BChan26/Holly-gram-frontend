@@ -15,6 +15,13 @@
   align-items: flex-end;
 }
 
+#SignInInfoForm {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+
+}
+
 #NavBarContent {
   display: flex;
   flex-direction: row;

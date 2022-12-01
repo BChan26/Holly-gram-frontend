@@ -1,6 +1,4 @@
 import RegisterPageIcon from '../assets/RegisterPageIcon.png'
-import SignIn from './SignIn'
-import { Route, Routes } from 'react-router-dom'
 import {Link} from 'react-router-dom'
 
 export default function Register () {
@@ -49,9 +47,7 @@ export default function Register () {
                 <button>SignIn</button>
             </Link>
             
-            <Routes>
-                <Route exact path="SignIn"     element={<SignIn/>}/>
-            </Routes>
+
             </div>
 
 
