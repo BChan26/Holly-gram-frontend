@@ -26,6 +26,23 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  align-items: center;
+}
+
+#HollyGramLogo {
+  height: 50px;
+  width: auto;
+}
+
+#FeedContent {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-evenly;
+}
+
+.FeedPosts, .SuggestionsForYou, .IndividualFeedPosts {
+  border:1px solid blue
 }
 
 .App {
