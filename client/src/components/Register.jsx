@@ -1,7 +1,50 @@
+//imports for Authentication
+import { useState } from 'react'
+import { RegisterUser } from '../services/Auth'
+import {useNavigate} from 'react-router-dom'
+
 import RegisterPageIcon from '../assets/RegisterPageIcon.png'
 import {Link} from 'react-router-dom'
 
 export default function Register () {
+
+    //logic for authentication, confirm variable names align
+    let navigate = useNavigate()
+
+    const [formValues, setFormValues] = useState({
+        fullName: '',
+        userName: '',
+        email: '',
+        password: '',
+        confirmPassword: ''
+    })
+
+    const handleChange = (e) => {
+    setFormValues({ ...formValues, [e.target.name]: e.target.value })
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        alert ("Working")
+
+        await RegisterUser({
+        fullName: formValues.fullName,
+        userName: formValues.userName,
+        email: formValues.email,
+        password: formValues.password
+        })
+
+        setFormValues({
+        fullName: '',
+        userName: '',
+        email: '',
+        password: '',
+        confirmPassword: ''
+        })
+    navigate('/SignIn')
+    }
+
+    //return or display with the form
     return (
     <div id='RegisterContent'>
 
@@ -16,29 +59,77 @@ export default function Register () {
             </div>
 
             <div id="RegisterInfoInput">
-                <form id="RegisterInfoForm">
+                <form   id="RegisterInfoForm" 
+                        onSubmit={handleSubmit}>
+
+
+                    <label>
+                    Full Name
+                    <input  
+                            onchange={handleChange}
+                            name="fullName" 
+                            type="text" 
+                            placeholder="John Doe"
+                            value={formValues.fullName}
+                            required
+                            />
+                    </label>
+
+                    <label>
+                    Username
+                    <input 
+                            onchange={handleChange}
+                            name="userName" 
+                            type="text" 
+                            placeholder="JohnDoe123"
+                            value={formValues.userName}
+                            required
+                            />
+                    </label>
 
                     <label>
                     Email
-                    <input type="text" name="Email" />
-                    </label>
-                                        
-                    <label>
-                    Full Name
-                    <input type="text" name="FullName" />
-                    </label>
-                                        
-                    <label>
-                    Username
-                    <input type="text" name="Username" />
-                    </label>
-                                        
-                    <label>
-                    Password
-                    <input type="text" name="Password" />
+                    <input  
+                            onChange={handleChange}
+                            name="Email" 
+                            type="email" 
+                            placeholder="email@email.com"
+                            value={formValues.email}
+                            required
+                            />
                     </label>
 
-                    <input type="submit" value="Sign Up" />
+                    <label>
+                    Password
+                    <input
+                            onChange={handleChange}
+                            type="password"
+                            name="password"
+                            value={formValues.password}
+                            required
+                            />
+                    </label>
+
+                    <label>
+                    Confirm Password
+                    <input
+                            onChange={handleChange}
+                            type="password"
+                            name="confirmPassword"
+                            value={formValues.confirmPassword}
+                            required
+                            />
+                    </label>
+
+                    <button
+                    disabled={
+                    !formValues.email ||
+                    (!formValues.password &&
+                        formValues.confirmPassword === formValues.password)
+                    }
+                    >
+                    Sign In
+                    </button>
                 </form>
             </div>
 
