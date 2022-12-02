@@ -1,3 +1,6 @@
+import RegisterPageIcon from '../assets/RegisterPageIcon.gif'
+import {Link} from 'react-router-dom'
+
 // import { useState } from 'react'
 
 // //SignInUser accepts one argument of data. Similar to Register, data is an object containing the following information:
@@ -46,10 +49,13 @@ export default function SignIn () {
     return (
         <div id='SignInContent'>
 
-        <div id="SignInInfo">
+            <div id="SignInPreview">
+            <img  id="RegisterPageIcon" src={RegisterPageIcon}/>
+            </div>
 
+        <div id="SignInInfo">
             <div id="SignInInfoLogo">
-            <h1>❄️Holly-Gram❄️</h1>
+            <h1>🎁 HollyGram 🎁</h1>
             </div>
 
             <div id="SignInInfoInput">
@@ -86,7 +92,7 @@ export default function SignIn () {
 
                     </div>
 
-                    <button 
+                    <button className='RegisterButtons'
                     // disabled={!formValues.email || !formValues.password}
                     >
                         Sign In
@@ -94,9 +100,13 @@ export default function SignIn () {
 
                 </form>
             </div>
-
+            <br/>
+            <div id="RouteToGoToRegister">
+            <Link to= "/Register">
+                <button className="RegisterButtons">Register Instead</button>
+            </Link>
         </div>
-
+        </div>
 
     </div>
 )}

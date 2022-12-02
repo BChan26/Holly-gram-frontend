@@ -1,12 +1,32 @@
-*{
+/* *{
   background-image: linear-gradient(to top right, #78d1fa, #e1fff5);
   background-attachment: fixed;
-}
+} */
 
 #RegisterContent {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  align-items: center;
+}
+
+#RegisterInfo {
+  background-color: #b02221;
+	border-radius:20px;
+	padding:20px 40px 20px 40px;
+  color: #cfa97a;
+}
+
+#SignInInfo {
+  background-color: #b02221;
+	border-radius:20px;
+	padding:20px 56px 84px 58px;
+  color: #cfa97a;
+}
+
+.RegisterButtons {
+  color: #b02221;
+  background-color:#cfa97a ;
 }
 
 #RegisterInfoForm {
@@ -15,11 +35,18 @@
   align-items: flex-end;
 }
 
+#SignInContent {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
 #SignInInfoForm {
   display: flex;
   flex-direction: column;
   align-content: center;
-
+  align-items: flex-end;
 }
 
 #NavBarContent {
