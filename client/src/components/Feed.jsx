@@ -2,7 +2,7 @@ import Nav from './Nav'
 import Hollygram from '../assets/Hollygram.png'
 import RegisterPageIcon from '../assets/RegisterPageIcon.png'
 
-// import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 // import { GetPosts } from '../services/PostServices'
 
 // We'll need useNavigate again for this next part:
@@ -12,6 +12,28 @@ import RegisterPageIcon from '../assets/RegisterPageIcon.png'
 
 
 export default function Feed () {
+
+  
+        const [users, setUsers] = useState([])
+        
+        useEffect(() => {
+        const handleUsers = async () => {
+            const data = await fetch("http://localhost:3000/feed")
+            console.log(data)
+            const us = await data.json()
+            setUsers(us.userdata)
+            console.log(us)
+            const data1 = { username: 'example' };
+await fetch('http://localhost:3000', {
+  method: 'POST', // or 'PUT'
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(data1),})
+        }
+        handleUsers()
+        }, [])  
+
 
 // export default function Feed ({user, authenticated}) {
         // let navigate = useNavigate()
@@ -55,6 +77,14 @@ return (
                     <p>{post.postText}</p>
                     </div>
                 ))} */}
+
+                                {users.map((user) => (
+                    <div className="card">
+                    <p>{user.name}</p>
+                    <img className="pics" style={{ display: 'block' }} src={user.image} alt={user.name} />
+                    </div>
+                ))}
+                    
                     
                     
                     
