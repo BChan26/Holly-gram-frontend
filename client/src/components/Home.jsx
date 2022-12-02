@@ -25,6 +25,8 @@ export default function Home ({authenticated, user, handleLogOut}) {
         <Link to="/">Home</Link>
         <Link to="/Register">Register</Link>
         <Link to="/SignIn">Sign In</Link>
+        {/* don't forget to comment out the feed link once we're done */}
+        <Link to="/Feed">Feed</Link>
       </nav>
     )
     
