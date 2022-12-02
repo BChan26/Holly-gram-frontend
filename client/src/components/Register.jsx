@@ -3,7 +3,7 @@
 // import { RegisterUser } from '../services/Auth'
 // import {useNavigate} from 'react-router-dom'
 
-import RegisterPageIcon from '../assets/RegisterPageIcon.png'
+import RegisterPageIcon from '../assets/RegisterPageIcon.gif'
 import {Link} from 'react-router-dom'
 
 export default function Register () {
@@ -49,13 +49,13 @@ export default function Register () {
     <div id='RegisterContent'>
 
         <div id="RegisterPreview">
-        <img src={RegisterPageIcon}/>
+        <img  id="RegisterPageIcon" src={RegisterPageIcon}/>
         </div>
 
         <div id="RegisterInfo">
 
             <div id="RegisterInfoLogo">
-            <h1>❄️Holly-Gram❄️</h1>
+            <h1>🎁 HollyGram 🎁</h1>
             </div>
 
             <div id="RegisterInfoInput">
@@ -70,7 +70,7 @@ export default function Register () {
                             // onchange={handleChange}
                             name="fullName" 
                             type="text" 
-                            placeholder="John Doe"
+                            placeholder="Tierra"
                             // value={formValues.fullName}
                             required
                             />
@@ -82,7 +82,7 @@ export default function Register () {
                             // onchange={handleChange}
                             name="userName" 
                             type="text" 
-                            placeholder="JohnDoe123"
+                            placeholder="IsAmazing"
                             // value={formValues.userName}
                             required
                             />
@@ -94,7 +94,7 @@ export default function Register () {
                             // onChange={handleChange}
                             name="Email" 
                             type="email" 
-                            placeholder="email@email.com"
+                            placeholder="Lindsey@rocks.org"
                             // value={formValues.email}
                             required
                             />
@@ -122,21 +122,22 @@ export default function Register () {
                             />
                     </label>
 
-                    <button
+                    <button className="RegisterButtons"
                     // disabled={
                     // !formValues.email ||
                     // (!formValues.password &&
                     //     formValues.confirmPassword === formValues.password)
                     // }
                     >
-                    Sign In
+                    Register
                     </button>
                 </form>
             </div>
-
+ 
+            <br/>
             <div id="RouteToGoToSignIn">
             <Link to= "/SignIn">
-                <button>SignIn</button>
+                <button className="RegisterButtons">Sign In Instead</button>
             </Link>
             
 
