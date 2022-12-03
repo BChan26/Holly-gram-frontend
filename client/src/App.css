@@ -54,6 +54,7 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  color:#cfa97a
 }
 
 #HollyGramLogo {
@@ -66,10 +67,12 @@
   flex-direction: row;
   align-content: center;
   justify-content: space-evenly;
+  
 }
 
 .FeedPosts, .SuggestionsForYou, .IndividualFeedPosts {
-  border:1px solid blue
+  border:1px solid #cfa97a;
+  color:#cfa97a;
 }
 
 .App {
