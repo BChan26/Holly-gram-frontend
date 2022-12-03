@@ -3,7 +3,12 @@ import NavBarIcons from '../assets/NavBarIcons.png'
 
 export default function Nav () {
     return (
-    <div id='NavBarContent'>
+    <div id='NavBarContent' style={{ 
+        backgroundImage: `url("https://i.postimg.cc/SQZChxPc/image-1.png")`,
+        backgroundPosition: 'right top',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'auto'
+    }}>
 
         <div id="NavBarLogo">
         <img id ="HollyGramLogo" src={Hollygram}/>
@@ -17,13 +22,13 @@ export default function Nav () {
                     <input type="text" name="Search" />
                     </label>
                                         
-                    <input type="submit" value="Go" />
+                    <button className="RegisterButtons" type="submit">Go</button>
                 </form>
             </div>
 
-        <div id="NavBarIcons">
+        {/* <div id="NavBarIcons">
         <img src={NavBarIcons}/>
-        </div>
+        </div> */}
 
     </div>
     )}

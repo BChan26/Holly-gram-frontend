@@ -65,7 +65,7 @@ return (
     <div id='FeedContent'>
 
         <div className="FeedPosts">
-        <h1>HollyGram Mapped Feed</h1>
+        <h1>Posts & Feed</h1>
 
                 {/* Check to make these values match the postdata */}
                 <div className="IndividualFeedPosts">
@@ -115,7 +115,7 @@ return (
         </div>
 
         <div className="SuggestionsForYou">
-        <h1>Where We'll Put Profile Info for User</h1>
+        <h1>Profile & Suggestions</h1>
         </div>
 
     </div>
