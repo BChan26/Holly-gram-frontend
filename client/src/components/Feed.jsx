@@ -14,26 +14,43 @@ import { useEffect, useState } from 'react'
 export default function Feed () {
 
   
-        const [users, setUsers] = useState([])
+//         const [users, setUsers] = useState([])
         
-        useEffect(() => {
-        const handleUsers = async () => {
-            const data = await fetch("http://localhost:3000/feed")
-            console.log(data)
-            const us = await data.json()
-            setUsers(us.userdata)
-            console.log(us)
-            const data1 = { username: 'example' };
-await fetch('http://localhost:3000', {
-  method: 'POST', // or 'PUT'
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify(data1),})
-        }
-        handleUsers()
-        }, [])  
+//         useEffect(() => {
+//         const handleUsers = async () => {
+//             const data = await fetch("http://localhost:3000/feed")
+//             console.log(data)
+//             const us = await data.json()
+//             setUsers(us.userdata)
+//             console.log(us)
+//             const data1 = { username: 'example' };
+// await fetch('http://localhost:3000', {
+//   method: 'POST', // or 'PUT'
+//   headers: {
+//     'Content-Type': 'application/json',
+//   },
+//   body: JSON.stringify(data1),})
+//         }
+//         handleUsers()
+//         }, [])  
 
+const [users, setUsers] = useState([])
+        
+useEffect(() => {
+const handleUsers = async () => {
+    const data = await fetch("http://localhost:3001/user/allusers")
+    console.log(data)
+
+    const us = await data.json()
+    setUsers(us)
+    
+    console.log(us)
+    const data1 = { username: 'example' };
+
+}
+handleUsers()
+}, [])  
+console.log(users)
 
 // export default function Feed ({user, authenticated}) {
         // let navigate = useNavigate()
@@ -78,12 +95,7 @@ return (
                     </div>
                 ))} */}
 
-                                {users.map((user) => (
-                    <div className="card">
-                    <p>{user.name}</p>
-                    <img className="pics" style={{ display: 'block' }} src={user.image} alt={user.name} />
-                    </div>
-                ))}
+
                     
                     
                     
@@ -116,6 +128,12 @@ return (
 
         <div className="SuggestionsForYou">
         <h1>Profile & Suggestions</h1>
+        {users.map((user) => (
+                    <div className="card">
+                    <p>{user.userName}</p>
+                    <img className="pics" style={{ display: 'block' }} src={user.profilePic} alt="profile picture" />
+                    </div>
+                ))}
         </div>
 
     </div>
