@@ -1,6 +1,9 @@
 import Nav from './Nav'
 import Hollygram from '../assets/Hollygram.png'
 import RegisterPageIcon from '../assets/RegisterPageIcon.png'
+import CommentIcon from '../assets/CommentIcon.gif'
+import LikeIcon from '../assets/LikeIcon.gif'
+import Snowman from '../assets/Snowman.png'
 
 import { useEffect, useState } from 'react'
 // import { GetPosts } from '../services/PostServices'
@@ -84,27 +87,89 @@ return (
         <div className="FeedPosts">
         <h1>Posts & Feed</h1>
 
-                {/* Check to make these values match the postdata */}
+                {/*.Map into this */}
                 <div className="IndividualFeedPosts">
-                {/* {posts.map((post) => (
-                    <div className="card" key={post.id}>
-                    <div>
-                        <img src={post.picture} alt="post"/>
+                    <div className="postWrapper">
+                        <div className="postTop">
+                            <div className="postTopLeft">
+                                <img src={Snowman}/>
+                                <span className="postUsername">Username Here</span>
+                                <span className="postDate"    >Created @ Christmas Day</span>
+                            </div>
+
+                            <div className="postTopRight">
+                                <button className="PostButtons">Edit</button>
+                            </div>
+                        </div>
+
+                    <div className="PostCenter"></div>
+                        <img className="postImg" src={RegisterPageIcon} alt="User's Post Pic"/>
+                        <span className="postText">Blurb about why I love winter but hate shoveling</span>
                     </div>
-                    <p>{post.postText}</p>
+
+                    <div className="PostBottom">
+                        <div className="PostBottomLeft">
+                            
+                            <button className="PostButtons"><img className="CommentIcon" src={CommentIcon} alt=""/></button>
+                            <button className="PostButtons"><img className="likeIcon"    src={LikeIcon} alt="" /></button>
+                        </div>
+
+                        <div className="postBottomRight">
+                            <span className="postCommentText">Where We'd Add the Feature to Comment</span>
+                        </div>
+                        <br/>
                     </div>
-                ))} */}
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    {/* {posts.map((post) => (
+                        <div className="card" key={post.id}>
+                        <div>
+                            <img src={post.picture} alt="post"/>
+                        </div>
+                        <p>{post.postText}</p>
+                        </div>
+                    ))} */}
 
 
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    {/* Template written out*/}
-                    
+                    {/* Template written out
                     <div className="TopOfPost">
                         <img src={Hollygram}/>
                         <h3>UserName</h3>
@@ -118,23 +183,25 @@ return (
                         <h4>Like</h4>
                         <h4>Comment</h4>
                         <h4>Tags</h4>
-                    </div>
+                    </div> */}
                     
                 </div>
-
-                <br/>
-
         </div>
 
-        <div className="SuggestionsForYou">
+    <div className="SuggestionsForYou">
+
         <h1>Profile & Suggestions</h1>
+
+
+        <div className="IndividualProfileAndSuggestions">
         {users.map((user) => (
                     <div className="card">
                     <p>{user.userName}</p>
-                    <img className="pics" style={{ display: 'block' }} src={user.profilePic} alt="profile picture" />
+                    {/* <img className="pics" style={{ display: 'block' }} src={user.profilePic} alt="profile picture" /> */}
                     </div>
                 ))}
         </div>
+    </div>
 
     </div>
 </div>
