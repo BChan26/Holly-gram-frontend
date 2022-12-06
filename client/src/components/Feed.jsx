@@ -5,6 +5,8 @@ import CommentIcon from '../assets/CommentIcon.gif'
 import LikeIcon from '../assets/LikeIcon.gif'
 import Snowman from '../assets/Snowman.png'
 
+import axios from 'axios'
+
 import { useEffect, useState } from 'react'
 // import { GetPosts } from '../services/PostServices'
 
@@ -42,18 +44,18 @@ const [users, setUsers] = useState([])
 useEffect(() => {
 const handleUsers = async () => {
     const data = await fetch("http://localhost:3001/user/allusers")
-    console.log(data)
+    // console.log(data)
 
     const us = await data.json()
     setUsers(us)
     
-    console.log(us)
+    // console.log(us)
     const data1 = { username: 'example' };
 
 }
 handleUsers()
 }, [])  
-console.log(users)
+// console.log(users)
 
 
 
@@ -63,15 +65,27 @@ const [posts, setPosts] = useState([])
 useEffect(() => {
     const handlePosts = async () => {
         const post = await fetch("http://localhost:3001/feed/")
-        console.log(post)
+        // console.log(post)
 
         const postInJSON = await post.json()
         setPosts(postInJSON)
-        console.log(postInJSON)
+        // console.log(postInJSON)
     }
 handlePosts()
 }, [])
-console.log(posts)
+// console.log(posts)
+
+
+//UseState and UseEffect for DELETING a post based on its ID
+const handleDeletePosts = async () => {
+        const post = await axios.delete(`http://localhost:3001/feed/7`)
+        // return (post)
+        window.location.reload()
+}
+//moving forward, we need to make the ending # dynamic, need to pass in the id from posts
+
+
+
 
 //Authentication
 // export default function Feed ({user, authenticated}) {
@@ -84,7 +98,6 @@ console.log(posts)
         // }
         // handlePosts()
         // }, [])
-
 
 
 //UseState and OnChangeHandler for Comments
@@ -125,7 +138,7 @@ return (
                             </div>
 
                             <div className="postTopRight">
-                                <button className="PostButtons">Delete</button>
+                                <button className="PostButtons" onClick={handleDeletePosts} >Delete</button>
                             </div>
                         </div>
 
