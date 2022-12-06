@@ -1,48 +1,51 @@
-//imports for Authentication
-// import { useState } from 'react'
-// import { RegisterUser } from '../services/Auth'
-// import {useNavigate} from 'react-router-dom'
+// imports for Authentication
+import { useState } from 'react'
+import { RegisterUser } from '../services/Auth'
+import {useNavigate} from 'react-router-dom'
 
 import RegisterPageIcon from '../assets/RegisterPageIcon.gif'
 import {Link} from 'react-router-dom'
 
 export default function Register () {
 
-    // //logic for authentication, confirm variable names align
-    // let navigate = useNavigate()
+    //logic for authentication, confirm variable names align
+    let navigate = useNavigate()
 
-    // const [formValues, setFormValues] = useState({
-    //     fullName: '',
-    //     userName: '',
-    //     email: '',
-    //     password: '',
-    //     confirmPassword: ''
-    // })
+    const [formValues, setFormValues] = useState({
+        fullName: '',
+        userName: '',
+        email: '',
+        password: '',
+        confirmPassword: ''
+    })
 
-    // const handleChange = (e) => {
-    // setFormValues({ ...formValues, [e.target.name]: e.target.value })
-    // }
+    const handleChange = (e) => {
+    setFormValues({ ...formValues, [e.target.name]: e.target.value })
+    }
 
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault()
-    //     alert ("Working")
+    const handleSubmit = async (e) => {
+        e.preventDefault()
 
-    //     await RegisterUser({
-    //     fullName: formValues.fullName,
-    //     userName: formValues.userName,
-    //     email: formValues.email,
-    //     password: formValues.password
-    //     })
 
-    //     setFormValues({
-    //     fullName: '',
-    //     userName: '',
-    //     email: '',
-    //     password: '',
-    //     confirmPassword: ''
-    //     })
-    // navigate('/SignIn')
-    // }
+        await RegisterUser({
+        fullName: formValues.fullName,
+        userName: formValues.userName,
+        email: formValues.email,
+        password: formValues.password
+        })
+        alert ("Working")
+
+        setFormValues({
+        fullName: '',
+        userName: '',
+        email: '',
+        password: '',
+        confirmPassword: ''
+        })
+
+
+    navigate('/SignIn')
+    }
 
     //return or display with the form
     return (
@@ -60,18 +63,18 @@ export default function Register () {
 
             <div id="RegisterInfoInput">
                 <form   id="RegisterInfoForm" 
-                        // onSubmit={handleSubmit}
+                        onSubmit={handleSubmit}
                         >
 
 
                     <label>
                     Full Name
                     <input  
-                            // onchange={handleChange}
+                            onChange={handleChange}
                             name="fullName" 
                             type="text" 
                             placeholder="John Doe"
-                            // value={formValues.fullName}
+                            value={formValues.fullName}
                             required
                             />
                     </label>
@@ -79,11 +82,11 @@ export default function Register () {
                     <label>
                     Username
                     <input 
-                            // onchange={handleChange}
+                            onChange={handleChange}
                             name="userName" 
                             type="text" 
                             placeholder="JohnDoe123"
-                            // value={formValues.userName}
+                            value={formValues.userName}
                             required
                             />
                     </label>
@@ -91,11 +94,11 @@ export default function Register () {
                     <label>
                     Email
                     <input  
-                            // onChange={handleChange}
-                            name="Email" 
+                            onChange={handleChange}
+                            name="email" 
                             type="email" 
                             placeholder="email@email.com"
-                            // value={formValues.email}
+                            value={formValues.email}
                             required
                             />
                     </label>
@@ -103,10 +106,10 @@ export default function Register () {
                     <label>
                     Password
                     <input
-                            // onChange={handleChange}
+                            onChange={handleChange}
                             type="password"
                             name="password"
-                            // value={formValues.password}
+                            value={formValues.password}
                             required
                             />
                     </label>
@@ -114,20 +117,20 @@ export default function Register () {
                     <label>
                     Confirm Password
                     <input
-                            // onChange={handleChange}
+                            onChange={handleChange}
                             type="password"
                             name="confirmPassword"
-                            // value={formValues.confirmPassword}
+                            value={formValues.confirmPassword}
                             required
                             />
                     </label>
 
                     <button className="RegisterButtons"
-                    // disabled={
-                    // !formValues.email ||
-                    // (!formValues.password &&
-                    //     formValues.confirmPassword === formValues.password)
-                    // }
+                    disabled={
+                    !formValues.email ||
+                    (!formValues.password &&
+                        formValues.confirmPassword === formValues.password)
+                    }
                     >
                     Register
                     </button>

@@ -8,13 +8,13 @@ import Snowman from '../assets/Snowman.png'
 import axios from 'axios'
 
 import { useEffect, useState } from 'react'
-// import { GetPosts } from '../services/PostServices'
+import { GetPosts } from '../services/PostServices'
 
 // We'll need useNavigate again for this next part:
-// import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
-export default function Feed () {
-
+export default function Feed ({ user, authenticated }) {
+    let navigate = useNavigate()
 //Reference Fetch Call from Tierra - Don't Delete
 //         const [users, setUsers] = useState([])
         
@@ -89,22 +89,6 @@ const handleDeletePosts = async (posts) => {
 //Then in our handleDeletePosts function, "posts" is the parameter AKA it's actually value.id of 1
 //So, we are actually passing in 1, the value.id, into the axios call, which deletes the Post #1
 
-
-
-
-//Authentication
-// export default function Feed ({user, authenticated}) {
-        // let navigate = useNavigate()
-        // const [posts, setPosts] = useState([])
-        // useEffect(() => {
-        // const handlePosts = async () => {
-        //     const data = await GetPosts()
-        //     setPosts(data)
-        // }
-        // handlePosts()
-        // }, [])
-
-
 //UseState and OnChangeHandler for Comments
 const [comment, setComment] = useState("")
 const [comments, setComments] = useState([])
@@ -117,9 +101,20 @@ const onChangeHandler = (e) => {
 }
 
 
+//Authentication
+// export default function Feed ({user, authenticated}) {
+//         let navigate = useNavigate()
+//         const [posts, setPosts] = useState([])
+//         useEffect(() => {
+//         const handlePosts = async () => {
+//             const data = await GetPosts()
+//             setPosts(data)
+//         }
+//         handlePosts()
+//         }, [])
 
 //Return to Display On Screen
-return (
+return (user && authenticated) ? (
 <div>
 
     <div id="NavBarLocation">
@@ -201,13 +196,12 @@ return (
 
     </div>
 </div>
-    // )
-    //   // Next, we'll set up the JSX for an unauthenticated user:
-    // : (
-    //     <div className="protected">
-    //       <h3>Oops! You must be signed in to do that!</h3>
-    //       <button onClick={()=> navigate('/SignIn')}>Sign In</button>
-    //     </div>
-    //   )
-// }
-)}
+    )
+      // Next, we'll set up the JSX for an unauthenticated user:
+    : (
+        <div className="protected">
+          <h3>Oops! You must be signed in to do that!</h3>
+          <button onClick={()=> navigate('/SignIn')}>Sign In</button>
+        </div>
+      )
+}

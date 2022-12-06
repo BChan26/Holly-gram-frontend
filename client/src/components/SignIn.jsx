@@ -1,40 +1,40 @@
 import RegisterPageIcon from '../assets/RegisterPageIcon.gif'
 import {Link} from 'react-router-dom'
 
-// import { useState } from 'react'
+import { useState } from 'react'
 
-// //SignInUser accepts one argument of data. Similar to Register, data is an object containing the following information:
-// //email
-// //password
-// import { SignInUser } from '../services/Auth'
+//SignInUser accepts one argument of data. Similar to Register, data is an object containing the following information:
+//email
+//password
+import { SignInUser } from '../services/Auth'
 
-// // Finally, we'll redirect the user to a protected page with a URL of /feed. We'll need to import useNavigate again as well:
-// import { useNavigate } from 'react-router-dom'
+// Finally, we'll redirect the user to a protected page with a URL of /feed. We'll need to import useNavigate again as well:
+import { useNavigate } from 'react-router-dom'
 
-// export default function SignIn (props) {
-export default function SignIn () {
+export default function SignIn (props) {
+// export default function SignIn () {
     
-            // let navigate = useNavigate()
+            let navigate = useNavigate()
         
-            // const [formValues, setFormValues] = useState({ email: '', password: '' })
+            const [formValues, setFormValues] = useState({ email: '', password: '' })
         
-            // const handleChange = (e) => {
-            // setFormValues({ ...formValues, [e.target.name]: e.target.value })
-            // }
+            const handleChange = (e) => {
+            setFormValues({ ...formValues, [e.target.name]: e.target.value })
+            }
         
-            // const handleSubmit = async (e) => {
-            // e.preventDefault()
+            const handleSubmit = async (e) => {
+            e.preventDefault()
         
-            // //In the handleSubmit, we'll invoke the SignInUser function, provide the formValues state as an argument, and capture the return value with a variable called payload:
-            // const payload = await SignInUser(formValues)
-            // //Next we'll reset the form once the request completes successfully:
-            // setFormValues({ email: '', password: '' })
-            // //We then take the payload and use it to update our user state in App.js with the setUser method we passed in as props:
-            // props.setUser(payload)
-            // //Once our user has been set, we'll toggle the authenticated state using toggleAuthenticated:
-            // props.toggleAuthenticated(true)
-            // navigate('/Feed')
-            // }
+            //In the handleSubmit, we'll invoke the SignInUser function, provide the formValues state as an argument, and capture the return value with a variable called payload:
+            const payload = await SignInUser(formValues)
+            //Next we'll reset the form once the request completes successfully:
+            setFormValues({ email: '', password: '' })
+            //We then take the payload and use it to update our user state in App.js with the setUser method we passed in as props:
+            props.setUser(payload)
+            //Once our user has been set, we'll toggle the authenticated state using toggleAuthenticated:
+            props.toggleAuthenticated(true)
+            navigate('/Feed')
+            }
         
 
 
@@ -60,7 +60,7 @@ export default function SignIn () {
 
             <div id="SignInInfoInput">
                 <form id="SignInInfoForm" 
-                // onSubmit={handleSubmit}
+                onSubmit={handleSubmit}
                 >
                     <div>
                         <label>
@@ -68,11 +68,11 @@ export default function SignIn () {
                         </label>
 
                         <input
-                            // onChange={handleChange}
+                            onChange={handleChange}
                             name="email"
                             type="email"
                             placeholder="email@email.com"
-                            // value={formValues.email}
+                            value={formValues.email}
                             required
                             />
                     </div>
@@ -83,17 +83,17 @@ export default function SignIn () {
                         </label>
 
                         <input
-                        // onChange={handleChange}
+                        onChange={handleChange}
                         type="password"
                         name="password"
-                        // value={formValues.password}
+                        value={formValues.password}
                         required
                         />
 
                     </div>
 
                     <button className='RegisterButtons'
-                    // disabled={!formValues.email || !formValues.password}
+                    disabled={!formValues.email || !formValues.password}
                     >
                         Sign In
                     </button>
