@@ -1,7 +1,7 @@
-// import Nav from './Nav'
-// import Feed from './Feed'
-// import Register from './Register'
-// import SignIn from './SignIn'
+import Nav from './Nav'
+import Feed from './Feed'
+import Register from './Register'
+import SignIn from './SignIn'
 
 import {Link} from 'react-router-dom'
 
@@ -26,7 +26,7 @@ export default function Home ({authenticated, user, handleLogOut}) {
         <Link to="/Register">Register</Link>
         <Link to="/SignIn">Sign In</Link>
         {/* don't forget to comment out the feed link once we're done */}
-        <Link to="/Feed">Feed</Link>
+        {/* <Link to="/Feed">Feed</Link> */}
       </nav>
     )
     
