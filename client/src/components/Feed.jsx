@@ -11,12 +11,9 @@ import { useEffect, useState } from 'react'
 // We'll need useNavigate again for this next part:
 // import { useNavigate } from 'react-router-dom'
 
-// Over in Feed.js, let's be sure and pass those props in. We'll destructure them...
-
-
 export default function Feed () {
 
-  
+//Reference Fetch Call from Tierra - Don't Delete
 //         const [users, setUsers] = useState([])
         
 //         useEffect(() => {
@@ -37,6 +34,9 @@ export default function Feed () {
 //         handleUsers()
 //         }, [])  
 
+
+
+//UseState and UseEffect for Mapping Out Users
 const [users, setUsers] = useState([])
         
 useEffect(() => {
@@ -55,12 +55,28 @@ handleUsers()
 }, [])  
 console.log(users)
 
+
+
+//UseState and UseEffect for Mapping Out Posts
+const [posts, setPosts] = useState([])
+
+useEffect(() => {
+    const handlePosts = async () => {
+        const post = await fetch("http://localhost:3001/feed/")
+        console.log(post)
+
+        const postInJSON = await post.json()
+        setPosts(postInJSON)
+        console.log(postInJSON)
+    }
+handlePosts()
+}, [])
+console.log(posts)
+
+//Authentication
 // export default function Feed ({user, authenticated}) {
         // let navigate = useNavigate()
-
-
         // const [posts, setPosts] = useState([])
-        
         // useEffect(() => {
         // const handlePosts = async () => {
         //     const data = await GetPosts()
@@ -68,13 +84,10 @@ console.log(users)
         // }
         // handlePosts()
         // }, [])
-        
 
 
-//We're going to wrap the JSX in our return statement in a ternary that checks if a) our user exists and b) that they are authenticated. If authenticated, we'll show the posts on the feed! If not, we need to send our user back to the Sign In page.
-  //First, let's set up that ternary. We want to check if both conditions are true, so we'll use &&:
-// return (user && authenticated) ?  (
 
+//UseState and OnChangeHandler for Comments
 const [comment, setComment] = useState("")
 const [comments, setComments] = useState([])
 
@@ -85,6 +98,9 @@ const onChangeHandler = (e) => {
     setComment(e.target.value)
 }
 
+
+
+//Return to Display On Screen
 return (
 <div>
 
@@ -97,29 +113,30 @@ return (
         <div className="FeedPosts">
         <h1>Posts & Feed</h1>
 
-                {/*.Map into this */}
+                {/* Mapping out posts into Feed Section */}
+                {posts.map((value) => (
                 <div className="IndividualFeedPosts">
                     <div className="postWrapper">
                         <div className="postTop">
                             <div className="postTopLeft">
                                 <img src={Snowman}/>
-                                <span className="postUsername">Username Here</span>
-                                <span className="postDate"    >Created @ Christmas Day</span>
+                                <span className="postUsername">{value.id}</span>
+                                <span className="postDate"    >{value.createdAt}</span>
                             </div>
 
                             <div className="postTopRight">
-                                <button className="PostButtons">Edit</button>
+                                <button className="PostButtons">Delete</button>
                             </div>
                         </div>
 
                     <div className="PostCenter"></div>
-                        <img className="postImg" src={RegisterPageIcon} alt="User's Post Pic"/>
-                        <span className="postText">Blurb about why I love winter but hate shoveling</span>
+                        <img className="postImg" src={value.picture} alt="User's Post Pic"/>
+                        <span className="postText">{value.postText}</span>
                     </div>
 
                     <div className="PostBottom">
                         <div className="PostBottomLeft">
-                            
+                            <span className="NumberOfLikes">{value.likes} likes</span>
                             <button className="PostButtons"><img className="CommentIcon" src={CommentIcon} alt=""/></button>
                             <button className="PostButtons"><img className="likeIcon"    src={LikeIcon} alt="" /></button>
                         </div>
@@ -128,7 +145,9 @@ return (
                             <span className="postCommentText">Where We'd Add the Feature to Comment</span>
                         </div>
                         <br/>
+                        
 
+                        {/* Tierra's Addition of the Comment Box */}
                         <div className="main-container">
                             {comments.map((text) => (
                                                             <div className="comment-container">{text}</div>
@@ -141,86 +160,21 @@ return (
                             className="input-box"/>
                             <button onClick={onClickHandler}className="comment-button">Submit</button>
                         </div>
-                    </div>
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    {/* {posts.map((post) => (
-                        <div className="card" key={post.id}>
-                        <div>
-                            <img src={post.picture} alt="post"/>
-                        </div>
-                        <p>{post.postText}</p>
-                        </div>
-                    ))} */}
-
-
-                    {/* Template written out
-                    <div className="TopOfPost">
-                        <img src={Hollygram}/>
-                        <h3>UserName</h3>
-                    </div>
-
-                    <div className="PictureOfPost">
-                        <img src={RegisterPageIcon}/>
-                    </div>
-
-                    <div className="LikesCommentsOfPost">
-                        <h4>Like</h4>
-                        <h4>Comment</h4>
-                        <h4>Tags</h4>
-                    </div> */}
-                    
+                    </div> 
                 </div>
+                ))}
         </div>
 
+    {/* Right Hand Column */}
     <div className="SuggestionsForYou">
 
         <h1>Profile & Suggestions</h1>
-
 
         <div className="IndividualProfileAndSuggestions">
         {users.map((user) => (
                     <div className="card">
                     <p>{user.userName}</p>
-                    {/* <img className="pics" style={{ display: 'block' }} src={user.profilePic} alt="profile picture" /> */}
+                    <img className="pics" style={{ display: 'block' }} src={user.profilePic} alt="profile picture" />
                     </div>
                 ))}
         </div>
