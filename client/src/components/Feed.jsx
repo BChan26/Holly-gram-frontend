@@ -75,6 +75,16 @@ console.log(users)
   //First, let's set up that ternary. We want to check if both conditions are true, so we'll use &&:
 // return (user && authenticated) ?  (
 
+const [comment, setComment] = useState("")
+const [comments, setComments] = useState([])
+
+const onClickHandler = (e) => {
+    setComments((comments) => [...comments, comment])
+}
+const onChangeHandler = (e) => {
+    setComment(e.target.value)
+}
+
 return (
 <div>
 
@@ -118,6 +128,19 @@ return (
                             <span className="postCommentText">Where We'd Add the Feature to Comment</span>
                         </div>
                         <br/>
+
+                        <div className="main-container">
+                            {comments.map((text) => (
+                                                            <div className="comment-container">{text}</div>
+                            ))}
+                            <div className="comment-flexbox"></div>
+                            <h3 className="comment-text">Comment</h3>
+                            <textarea 
+                            value={comment}
+                            onChange={onChangeHandler}
+                            className="input-box"/>
+                            <button onClick={onClickHandler}className="comment-button">Submit</button>
+                        </div>
                     </div>
                     
                     
