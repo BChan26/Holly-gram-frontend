@@ -76,13 +76,18 @@ handlePosts()
 // console.log(posts)
 
 
-//UseState and UseEffect for DELETING a post based on its ID
-const handleDeletePosts = async () => {
-        const post = await axios.delete(`http://localhost:3001/feed/7`)
+//DELETING a post based on its ID
+const handleDeletePosts = async (posts) => {
+        // const post = await axios.delete(`http://localhost:3001/feed/7`)
+        const post = await axios.delete(`http://localhost:3001/feed/${posts}`)
         // return (post)
         window.location.reload()
 }
-//moving forward, we need to make the ending # dynamic, need to pass in the id from posts
+//In our button, it has on OnClick for handleDeletePosts, with a parameter of value.id
+//When the posts get mapped out, the div (similar to Tierra's P2) all have a key of value.id
+//So after mapping when we click the button, the parameter is the specific value ID (AKA post1 has generated value.id of 1)
+//Then in our handleDeletePosts function, "posts" is the parameter AKA it's actually value.id of 1
+//So, we are actually passing in 1, the value.id, into the axios call, which deletes the Post #1
 
 
 
@@ -128,7 +133,7 @@ return (
 
                 {/* Mapping out posts into Feed Section */}
                 {posts.map((value) => (
-                <div className="IndividualFeedPosts">
+                <div className="IndividualFeedPosts" key={value.id}>
                     <div className="postWrapper">
                         <div className="postTop">
                             <div className="postTopLeft">
@@ -138,7 +143,8 @@ return (
                             </div>
 
                             <div className="postTopRight">
-                                <button className="PostButtons" onClick={handleDeletePosts} >Delete</button>
+                                {/* <button className="PostButtons" onClick={handleDeletePosts} >Delete</button> */}
+                                <button onClick={()=>handleDeletePosts(value.id)}className="delete-container">Delete</button>
                             </div>
                         </div>
 
