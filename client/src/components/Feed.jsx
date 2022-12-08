@@ -1,87 +1,60 @@
 import Nav from './Nav'
-import Hollygram from '../assets/Hollygram.png'
-import RegisterPageIcon from '../assets/RegisterPageIcon.png'
-import CommentIcon from '../assets/CommentIcon.gif'
-import LikeIcon from '../assets/LikeIcon.gif'
 import Snowman from '../assets/Snowman.png'
-
 import axios from 'axios'
+import Comment from './Comment'
 
 import { useEffect, useState } from 'react'
-import { GetPosts } from '../services/PostServices'
 
-// We'll need useNavigate again for this next part:
 import { useNavigate } from 'react-router-dom'
 
 export default function Feed ({ user, authenticated }) {
     let navigate = useNavigate()
-//Reference Fetch Call from Tierra - Don't Delete
-//         const [users, setUsers] = useState([])
-        
-//         useEffect(() => {
-//         const handleUsers = async () => {
-//             const data = await fetch("http://localhost:3000/feed")
-//             console.log(data)
-//             const us = await data.json()
-//             setUsers(us.userdata)
-//             console.log(us)
-//             const data1 = { username: 'example' };
-// await fetch('http://localhost:3000', {
-//   method: 'POST', // or 'PUT'
-//   headers: {
-//     'Content-Type': 'application/json',
-//   },
-//   body: JSON.stringify(data1),})
-//         }
-//         handleUsers()
-//         }, [])  
-
 
 
 //UseState and UseEffect for Mapping Out Users
 const [users, setUsers] = useState([])
-        
+// const [loggedIn, setLoggedIn] = useState({})
+
 useEffect(() => {
 const handleUsers = async () => {
     const data = await fetch("http://localhost:3001/user/allusers")
     // console.log(data)
-
     const us = await data.json()
     setUsers(us)
-    
     // console.log(us)
-    const data1 = { username: 'example' };
-
+    // const data1 = { username: 'example' };
 }
 handleUsers()
+// setLoggedIn(user)
+// console.log(loggedIn)
 }, [])  
+// console.log(loggedIn)
 // console.log(users)
 
+const handlePosts = async () => {
+    const post = await fetch("http://localhost:3001/feed/")
+    // console.log(post)
 
+    const postInJSON = await post.json()
+    setPosts(postInJSON)
+    // console.log(postInJSON)
+}
 
 //UseState and UseEffect for Mapping Out Posts
 const [posts, setPosts] = useState([])
-
 useEffect(() => {
-    const handlePosts = async () => {
-        const post = await fetch("http://localhost:3001/feed/")
-        // console.log(post)
-
-        const postInJSON = await post.json()
-        setPosts(postInJSON)
-        // console.log(postInJSON)
-    }
 handlePosts()
 }, [])
 // console.log(posts)
 
 
 //DELETING a post based on its ID
-const handleDeletePosts = async (posts) => {
-        // const post = await axios.delete(`http://localhost:3001/feed/7`)
-        const post = await axios.delete(`http://localhost:3001/feed/${posts}`)
-        // return (post)
+const handleDeletePosts = async (postNumber) => {
+        const post = await axios.delete(`http://localhost:3001/feed/${postNumber}`)
         window.location.reload()
+        return (post)
+        // console.log(postNumber)
+
 }
 //In our button, it has on OnClick for handleDeletePosts, with a parameter of value.id
 //When the posts get mapped out, the div (similar to Tierra's P2) all have a key of value.id
@@ -89,32 +62,10 @@ const handleDeletePosts = async (posts) => {
 //Then in our handleDeletePosts function, "posts" is the parameter AKA it's actually value.id of 1
 //So, we are actually passing in 1, the value.id, into the axios call, which deletes the Post #1
 
-//UseState and OnChangeHandler for Comments
-const [comment, setComment] = useState("")
-const [comments, setComments] = useState([])
-
-const onClickHandler = (e) => {
-    setComments((comments) => [...comments, comment])
-}
-const onChangeHandler = (e) => {
-    setComment(e.target.value)
-}
-
-
-//Authentication
-// export default function Feed ({user, authenticated}) {
-//         let navigate = useNavigate()
-//         const [posts, setPosts] = useState([])
-//         useEffect(() => {
-//         const handlePosts = async () => {
-//             const data = await GetPosts()
-//             setPosts(data)
-//         }
-//         handlePosts()
-//         }, [])
 
 //Return to Display On Screen
-return (user && authenticated) ? (
+return (user && authenticated ) ? (
+
 <div>
 
     <div id="NavBarLocation">
@@ -127,53 +78,46 @@ return (user && authenticated) ? (
         <h1>Posts & Feed</h1>
 
                 {/* Mapping out posts into Feed Section */}
-                {posts.map((value) => (
-                <div className="IndividualFeedPosts" key={value.id}>
+                {posts.map((post) => (
+                    
+                <div className="IndividualFeedPosts" key={post.id}>
                     <div className="postWrapper">
                         <div className="postTop">
                             <div className="postTopLeft">
-                                <img src={Snowman}/>
-                                <span className="postUsername">{value.id}</span>
-                                <span className="postDate"    >{value.createdAt}</span>
+                                <img id="snowman" src={Snowman} alt="profileposticon"/>
+                                <span className="postUsername">{post.id}</span>
+                                
+                            </div>
+
+                            <div className="postTopMiddle">
+                            <span className="postDate">{post.createdAt.slice(0,10)}</span>
                             </div>
 
                             <div className="postTopRight">
-                                {/* <button className="PostButtons" onClick={handleDeletePosts} >Delete</button> */}
-                                <button onClick={()=>handleDeletePosts(value.id)}className="delete-container">Delete</button>
+                                <button onClick={()=>handleDeletePosts(post.id)}className="delete-container">Delete</button>
                             </div>
                         </div>
 
                     <div className="PostCenter"></div>
-                        <img className="postImg" src={value.picture} alt="User's Post Pic"/>
-                        <span className="postText">{value.postText}</span>
+                        <img className="postImg" src={post.picture} alt="User's Post Pic"/>
+                        <span className="postText">{post.postText}</span>
                     </div>
 
                     <div className="PostBottom">
                         <div className="PostBottomLeft">
-                            <span className="NumberOfLikes">{value.likes} likes</span>
-                            <button className="PostButtons"><img className="CommentIcon" src={CommentIcon} alt=""/></button>
-                            <button className="PostButtons"><img className="likeIcon"    src={LikeIcon} alt="" /></button>
+                            <span className="NumberOfLikes">{post.likes} Likes</span>
+                            <br/>
+                            <br/>
                         </div>
 
                         <div className="postBottomRight">
-                            <span className="postCommentText">Where We'd Add the Feature to Comment</span>
+                            
                         </div>
                         <br/>
-                        
+                        <Comment user={user} postId={post.id} handlePosts={handlePosts}/>
+                        <br/>
 
-                        {/* Tierra's Addition of the Comment Box */}
-                        <div className="main-container">
-                            {comments.map((text) => (
-                                                            <div className="comment-container">{text}</div>
-                            ))}
-                            <div className="comment-flexbox"></div>
-                            <h3 className="comment-text">Comment</h3>
-                            <textarea 
-                            value={comment}
-                            onChange={onChangeHandler}
-                            className="input-box"/>
-                            <button onClick={onClickHandler}className="comment-button">Submit</button>
-                        </div>
+                        
                     </div> 
                 </div>
                 ))}
@@ -182,13 +126,13 @@ return (user && authenticated) ? (
     {/* Right Hand Column */}
     <div className="SuggestionsForYou">
 
-        <h1>Profile & Suggestions</h1>
+        <h1>Users</h1>
 
         <div className="IndividualProfileAndSuggestions">
         {users.map((user) => (
-                    <div className="card">
-                    <p>{user.userName}</p>
-                    <img className="pics" style={{ display: 'block' }} src={user.profilePic} alt="profile picture" />
+                    <div className="card" key={user.id}>
+                    <h3>{user.userName}</h3>
+                    <img className="pics" style={{ display: 'block' }} src={user.profilePic} alt="Doesn't Have A Profile Pic" />
                     </div>
                 ))}
         </div>
@@ -197,11 +141,11 @@ return (user && authenticated) ? (
     </div>
 </div>
     )
-      // Next, we'll set up the JSX for an unauthenticated user:
+      //JSX for an unauthenticated user:
     : (
         <div className="protected">
-          <h3>Oops! You must be signed in to do that!</h3>
-          <button onClick={()=> navigate('/SignIn')}>Sign In</button>
+            <h1 className="Redirection">Sign in to see Hollygram & all your updates!</h1>
+            <button className="RegisterButtons" onClick={()=> navigate('/SignIn')}>Sign In</button>
         </div>
-      )
+    )
 }

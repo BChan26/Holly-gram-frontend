@@ -8,7 +8,7 @@ import {Link} from 'react-router-dom'
 
 export default function Register () {
 
-    //logic for authentication, confirm variable names align
+//logic for authentication
     let navigate = useNavigate()
 
     const [formValues, setFormValues] = useState({
@@ -33,7 +33,7 @@ export default function Register () {
         email: formValues.email,
         password: formValues.password
         })
-        alert ("Working")
+        alert ("Account Created! Please Sign In.")
 
         setFormValues({
         fullName: '',
@@ -47,7 +47,7 @@ export default function Register () {
     navigate('/SignIn')
     }
 
-    //return or display with the form
+//return or display with the form
     return (
     <div id='RegisterContent'>
 

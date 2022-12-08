@@ -8,7 +8,7 @@
 #RegisterInfo {
   background-color: #b02221;
 	border-radius:20px;
-	padding:20px 40px 20px 40px;
+	padding:20px 40px 20px 38px;
   color: #cfa97a;
 }
 
@@ -19,7 +19,7 @@
   color: #cfa97a;
 }
 
-.RegisterButtons {
+.RegisterButtons, #LogOutButton, .delete-container, .button-styling {
   color: #b02221;
   background-color:#cfa97a ;
 }
@@ -53,7 +53,12 @@
 }
 
 #HollyGramLogo {
-  height: 50px;
+  height: 100px;
+  width: auto;
+}
+
+#snowman {
+  height: 40px;
   width: auto;
 }
 
@@ -155,11 +160,21 @@
 }
 
 .postCommentText{
-    cursor: pointer;
-    border-bottom: 1px dashed #cfa97a;
-    font-size: 12px;
+    /* cursor: pointer; */
+    border: 1px dashed #cfa97a;
+    font-size: 20px;
 }
 
+.Redirection {
+  color: #cfa97a;
+}
+
+.AllComments {
+  border-bottom: 1px solid #cfa97a;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 
 .App {
   text-align: center;
