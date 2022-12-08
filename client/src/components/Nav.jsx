@@ -1,7 +1,9 @@
 import Hollygram from '../assets/Hollygram.png'
-import NavBarIcons from '../assets/NavBarIcons.png'
 
-export default function Nav () {
+import {Link} from 'react-router-dom'
+
+export default function Nav ({authenticated, user, handleLogOut}) {
+
     return (
     <div id='NavBarContent' style={{ 
         backgroundImage: `url("https://i.postimg.cc/SQZChxPc/image-1.png")`,
@@ -14,21 +16,13 @@ export default function Nav () {
         <img id ="HollyGramLogo" src={Hollygram}/>
         </div>
 
-        <div id="NavBarSearchBar">
-                <form id="SearchBar">
-                                        
-                    <label>
-                    Search
-                    <input type="text" name="Search" />
-                    </label>
-                                        
-                    <button className="RegisterButtons" type="submit">Go</button>
-                </form>
-            </div>
-
-        {/* <div id="NavBarIcons">
-        <img src={NavBarIcons}/>
-        </div> */}
+        <div id="LogOut">
+        <button id="LogOutButton">
+        <Link onClick={handleLogOut} to="/">
+        Sign Out
+        </Link>
+        </button>
+        </div>
 
     </div>
     )}

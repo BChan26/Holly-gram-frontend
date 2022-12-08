@@ -17,7 +17,7 @@ export const SignInUser = async (data) => {
 // Now that we've set the ability to store the token, let's try signing in with the user you created earlier.
 
     localStorage.setItem('token', res.data.token)
-
+// console.log(res.data.token)
     return res.data.user
   } catch (error) {
     throw error
@@ -37,6 +37,7 @@ export const CheckSession = async () => {
   try {
     // Checks if the current token if it exists is valid
     const res = await Client.get('/auth/session')
+    console.log(res)
     return res.data
   } catch (error) {
     throw error

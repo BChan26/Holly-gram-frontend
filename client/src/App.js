@@ -1,13 +1,13 @@
-////Imports for authentication
+////Imports for Authentication
 import { useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { CheckSession } from './services/Auth'
 
-// import { Link } from 'react-router-dom'
 import Register from './components/Register'
 import SignIn from './components/SignIn'
 import Feed from './components/Feed'
 import Home from './components/Home'
+import Nav from './components/Nav'
 import './App.css';
 
 function App() {
@@ -15,7 +15,6 @@ function App() {
   const [user, setUser] = useState(null)
 
   const handleLogOut = () => {
-    //Reset all auth related state and clear localStorage
     setUser(null)
     toggleAuthenticated(false)
     localStorage.clear()
@@ -31,6 +30,7 @@ function App() {
   //Here, we'll invoke the CheckSession function and store the returned information in a variable called user:
   const checkToken = async () => {
     const user = await CheckSession()
+    // console.log(user, 'user')
     //Next, we'll store this returned user in state using the setUser method:
     setUser(user)
     //Finally, we'll toggle the authenticated state:
@@ -40,8 +40,10 @@ function App() {
 // We'll utilize useEffect to check if a token exists currently. If and only if a token exists, we'll invoke our checkToken function:
   useEffect(()=> {
     const token = localStorage.getItem('token')
+    // console.log(token)
     if (token) {
       checkToken()
+      // console.log(checkToken)
     }
   }, [])
 
@@ -50,48 +52,29 @@ function App() {
 
   return (
     <div className="App">
-      {/* <Home
-        authenticated={authenticated}
-        user={user}
-        handleLogOut={handleLogOut}
-      /> */}
 
     <main>
         <Routes>
           <Route path="/" element={<Home
                                     authenticated={authenticated}
                                     user={user}
-                                    handleLogOut={handleLogOut}/>} />
-          {/* Now that our registration functionality is set up, we can focus on letting a user sign in to our application.
-          We'll start by providing setUser and toggleAuthenticated to the SignIn component as props in App.js: */}
+                                    />} />
           <Route path="/SignIn" element={<SignIn 
                                           setUser={setUser}
                                           toggleAuthenticated={toggleAuthenticated}
                                           />} />
           <Route path="/Register" element={<Register />} />
-          {/* Protected Routes are routes that can only be accessed if a condition is met (usually, if user is properly authenticated). It returns the component or redirects a user to another route based on a set condition. 
-          In App.js, let's pass our user and authenticated states as props to our Feed component... */}
           <Route path="/Feed" element={<Feed 
                                         user={user} 
                                         authenticated={authenticated}
                                         />} />
+          <Route path="/Nav" element={<Nav 
+                                      authenticated={authenticated}
+                                      user={user}
+                                      handleLogOut={handleLogOut}
+                                      />}/>
         </Routes>
       </main>
-
-
-
-    {/* <Link to= "/">
-      <div>❄️Holly-Gram Home Page❄️</div>
-    </Link>
-    <br/>
-    <br/>
-    <Routes>
-    <Route exact path="/"     element={<Home/>}/>
-    <Route exact path="Feed"     element={<Feed/>}/>
-    <Route exact path="SignIn"     element={<SignIn/>}/>
-    <Route exact path="Register"   element={<Register/>}/>
-    </Routes> */}
-
     </div>
   );
 }
