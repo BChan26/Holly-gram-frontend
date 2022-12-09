@@ -62,17 +62,17 @@ The aim of this group project was to create a PERN full-stack application called
 
 # Initial ERD, Component Hierarchy Diagram, and Trello
 
-![picture4] (https://i.postimg.cc/bYLMfv3G/Screen-Shot-2022-12-09-at-9-17-06-AM.png)
+![picture4](https://i.postimg.cc/bYLMfv3G/Screen-Shot-2022-12-09-at-9-17-06-AM.png)
 
-![picture5] (https://i.postimg.cc/0NfGKz6D/Screen-Shot-2022-12-09-at-9-17-13-AM.png)
+![picture5](https://i.postimg.cc/0NfGKz6D/Screen-Shot-2022-12-09-at-9-17-13-AM.png)
 
-![picture7] (https://i.postimg.cc/7PCBdNGR/Screen-Shot-2022-12-09-at-9-17-30-AM.png)
+![picture7](https://i.postimg.cc/7PCBdNGR/Screen-Shot-2022-12-09-at-9-17-30-AM.png)
 
 # Final Product
 
-![picture9] (https://i.postimg.cc/ZqhvcJkH/image-1.png)
+![picture9](https://i.postimg.cc/ZqhvcJkH/image-1.png)
 
-![picture10] (https://i.postimg.cc/s23b7Z2J/image.png)
+![picture10](https://i.postimg.cc/s23b7Z2J/image.png)
 
 
 # Challenges & Future Iterations
