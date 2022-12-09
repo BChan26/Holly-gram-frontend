@@ -23,5 +23,4 @@ Client.interceptors.request.use((config) => {
     (error) => Promise.reject(error)
   )
 
-
 export default Client

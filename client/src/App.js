@@ -22,15 +22,13 @@ function App() {
 
 // //Persisting Logged In Users
 // // Nothing is more frustrating to a user than an application that constantly kicks them back to a log in screen when they refresh. Luckily, that's a simple fix.
-
 // // What we'll do here is add some logic to check if a token is already stored in localStorage. If it is, we'll make a request to a route in our back-end that will validate and decrypt the currently stored token. This decrypted token will contain the same information about the user that we stored after signing in.
-
 // //Next, we'll create a method called checkToken that will make a GET request to our back-end with the currently stored token to check it's validity:
 
   //Here, we'll invoke the CheckSession function and store the returned information in a variable called user:
   const checkToken = async () => {
     const user = await CheckSession()
-    // console.log(user, 'user')
+    console.log(user, 'user')
     //Next, we'll store this returned user in state using the setUser method:
     setUser(user)
     //Finally, we'll toggle the authenticated state:
@@ -40,10 +38,10 @@ function App() {
 // We'll utilize useEffect to check if a token exists currently. If and only if a token exists, we'll invoke our checkToken function:
   useEffect(()=> {
     const token = localStorage.getItem('token')
-    // console.log(token)
+    console.log(token)
     if (token) {
       checkToken()
-      // console.log(checkToken)
+      console.log(checkToken)
     }
   }, [])
 

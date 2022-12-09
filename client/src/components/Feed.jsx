@@ -144,7 +144,7 @@ return (user && authenticated ) ? (
       //JSX for an unauthenticated user:
     : (
         <div className="protected">
-            <h1 className="Redirection">Sign in to see Hollygram & all your updates!</h1>
+            <h1 className="Redirection">Sign in to see Hollygram & Updates!</h1>
             <button className="RegisterButtons" onClick={()=> navigate('/SignIn')}>Sign In</button>
         </div>
     )
