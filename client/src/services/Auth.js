@@ -17,7 +17,7 @@ export const SignInUser = async (data) => {
 // Now that we've set the ability to store the token, let's try signing in with the user you created earlier.
 
     localStorage.setItem('token', res.data.token)
-// console.log(res.data.token)
+console.log(res.data.token)
     return res.data.user
   } catch (error) {
     throw error

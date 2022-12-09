@@ -71,6 +71,7 @@ const showComments = async() => {
 useEffect(() => {
     showComments()
     }, [])
+//to make the comment just show always, remove the [] after the curly bracket, then comment out window.location.reload()
 
 /////////////////////////////////////////////////////////////////////////
 

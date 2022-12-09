@@ -3,25 +3,31 @@ import { useEffect, useState } from 'react'
 
 export default function EditComment ({comment}) {
 
-
+//Initial value for useState for Editing Comment
 const commentEdit = {
     userId: comment.userId,
     postId: comment.postId,
     commentText: comment.commentText
 }
 
+//useState, with editComment as current state and setEditComment as func to update state
 const [editComment, setEditComment] = useState(commentEdit)
 
+    //edit's handleChange w/ text input value updating commentText
     const editHandleChange = (event) => {
         setEditComment({...editComment, ['commentText']: event.target.value})
     }
     
+    //edit's handleSubmit to actualize changes
+    //runs axios call and updates state
     const editHandleSubmit = (event) => {
     event.preventDefault();
         editComments(editComment)
         setEditComment(commentEdit)
         window.location.reload()
     }
+
+    //axios call to update
     const editComments = async() => {
         const post = await axios.put(`http://localhost:3001/comment/${comment.id}/`, editComment)
         console.log(post.data)
