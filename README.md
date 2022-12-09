@@ -77,4 +77,4 @@ The aim of this group project was to create a PERN full-stack application called
 
 # Challenges & Future Iterations
 It is expected but still challenging when plans need to be tweaked, and you need to re-adjust your actionable items with the amount of time available. Our planned Component Hierarchy Diagram compared to our final product's were different, but ultimately still achieved the same goal. I enjoyed working on a team, but we realized very quickly that clear communication, agreed upon conventions, and sharing were the keys to making this application work. In a future iteration, it would have been good for us to have more specified tasks and ways of implementing them clearly defined on our Trello board. For example, f we missed a deadline, we should have pivoted earlier and adjusted accordingly.
-![picture6] (https://i.postimg.cc/hjCVtNJB/Screen-Shot-2022-12-09-at-9-28-05-AM.png)
+![picture6](https://i.postimg.cc/hjCVtNJB/Screen-Shot-2022-12-09-at-9-28-05-AM.png)
