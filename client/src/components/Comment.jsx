@@ -37,7 +37,7 @@ const handleChange = (event) => {
 
 //axios call (which needs to be called/invoked) to CREATE or post the comment, w/ the current state "comment" as its value/reference
 const handleComments = async () => {
-    const post = await axios.post(`http://localhost:3001/comment/`, comment)
+    const post = await axios.post(`https://holly-gram-backend-2-production.up.railway.app/comment/`, comment)
     // console.log(comment)
     return post.data
 }
@@ -62,7 +62,7 @@ event.preventDefault();
 //setAllComments changes the state of comments
 const [comments, setAllComments] = useState (null)
 const showComments = async() => {
-    const post = await axios.get(`http://localhost:3001/comment/${postId}/`)
+    const post = await axios.get(`https://holly-gram-backend-2-production.up.railway.app/comment/${postId}/`)
     // console.log(post.data)
     setAllComments(post.data)
 }
