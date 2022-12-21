@@ -1,5 +1,5 @@
 import Axios from 'axios'
-export const BASE_URL = 'http://localhost:3001'
+export const BASE_URL = 'https://holly-gram-backend-2-production.up.railway.app/'
 const Client = Axios.create({ baseURL: BASE_URL })
 
 //Enter Interceptors
