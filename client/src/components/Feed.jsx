@@ -51,7 +51,7 @@ handlePosts()
 //DELETING a post based on its ID
 const handleDeletePosts = async (postNumber) => {
         const post = await axios.delete(`https://holly-gram-backend-2-production.up.railway.app/feed/${postNumber}`)
-        window.location.reload()
+        // window.location.reload()
         return (post)
         // console.log(postNumber)
 

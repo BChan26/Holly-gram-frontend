@@ -53,7 +53,7 @@ event.preventDefault();
     handlePosts()
     //recalling the handlePosts here because it's a RESTful API
     setComment(commentInfo)
-    window.location.reload()
+    // window.location.reload()
 }
 
 //Another UseState to hold onto changes to post them
