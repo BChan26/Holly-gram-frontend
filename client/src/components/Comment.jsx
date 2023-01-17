@@ -37,7 +37,7 @@ const handleChange = (event) => {
 
 //axios call (which needs to be called/invoked) to CREATE or post the comment, w/ the current state "comment" as its value/reference
 const handleComments = async () => {
-    const post = await axios.post(`https://holly-gram-backend-2-production.up.railway.app/comment/`, comment)
+    const post = await axios.post(`https://holly-gram-backend-2-production.up..app/comment/`, comment)
     // console.log(comment)
     return post.data
 }
