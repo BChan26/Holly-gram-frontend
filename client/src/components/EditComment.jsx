@@ -24,7 +24,7 @@ const [editComment, setEditComment] = useState(commentEdit)
     event.preventDefault();
         editComments(editComment)
         setEditComment(commentEdit)
-        window.location.reload()
+        // window.location.reload()
     }
 
     //axios call to update
